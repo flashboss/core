@@ -81,7 +81,7 @@ public class NewUserEventListener extends UserEventListener
    {
    }
 
-   private void createDefaultUserMemberships(User user, OrganizationService service) throws Exception
+   protected void createDefaultUserMemberships(User user, OrganizationService service) throws Exception
    {
       List<?> groups = config_.getGroup();
       if (groups.size() == 0)
@@ -93,5 +93,9 @@ public class NewUserEventListener extends UserEventListener
          MembershipType mtype = service.getMembershipTypeHandler().findMembershipType(jgroup.getMembership());
          service.getMembershipHandler().linkMembership(user, group, mtype, false);
       }
+   }
+   
+   protected NewUserConfig getConfig() {
+      return config_
    }
 }
