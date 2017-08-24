@@ -62,8 +62,7 @@ public class NewUserEventListener extends UserEventListener
       ExoContainer pcontainer = ExoContainerContext.getCurrentContainer();
       OrganizationService service =
          (OrganizationService)pcontainer.getComponentInstanceOfType(OrganizationService.class);
-      UserProfile up = service.getUserProfileHandler().createUserProfileInstance();
-      up.setUserName(user.getUserName());
+      UserProfile up = service.getUserProfileHandler().createUserProfileInstance(user.getUserName());
       service.getUserProfileHandler().saveUserProfile(up, false);
       if (config_ == null)
          return;
