@@ -28,7 +28,6 @@ import org.exoplatform.services.organization.User;
 import org.exoplatform.services.organization.UserEventListener;
 import org.exoplatform.services.organization.UserProfile;
 
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -45,16 +44,6 @@ public class NewUserEventListener extends UserEventListener
    public NewUserEventListener(InitParams params) throws Exception
    {
       config_ = (NewUserConfig)params.getObjectParamValues(NewUserConfig.class).get(0);
-   }
-
-   public void preSave(User user, boolean isNew) throws Exception
-   {
-      if (isNew)
-      {
-         Date date = new Date();
-         user.setLastLoginTime(date);
-         user.setCreatedDate(date);
-      }
    }
 
    public void postSave(User user, boolean isNew) throws Exception
